@@ -1,0 +1,25 @@
+{
+  "name": "broccoli-rsvg",
+  "description": "SVG to PNG renderer for Broccoli",
+  "version": "0.1.0",
+  "author": "Greg V <floatboth@me.com>",
+  "main": "index.js",
+  "license": "Apache License 2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/myfreeweb/broccoli-rsvg"
+  },
+  "keywords": [
+    "broccoli-plugin",
+    "svg",
+    "rsvg"
+  ],
+  "dependencies": {
+    "broccoli-transform": "^0.1.1",
+    "mkdirp": "^0.3.5",
+    "walk-sync": "^0.1.0",
+    "lodash": "~2.4.1",
+    "rsvp": "^3.0.3",
+    "rsvg": "^0.2.3"
+  }
+}
