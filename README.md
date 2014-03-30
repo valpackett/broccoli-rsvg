@@ -26,7 +26,7 @@ npm install --save-dev broccoli-rsvg
 ```js
 var renderSvg = require('broccoli-rsvg');
 
-var outputTree = compileSass(inputTree, fileOptions);
+var outputTree = renderSvg(inputTree, fileOptions);
 ```
 
 - **`inputTree`**: A tree that contains the SVG files you want to render.
