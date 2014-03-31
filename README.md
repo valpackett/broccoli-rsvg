@@ -46,6 +46,19 @@ var png = renderSvg("svg", {
         path: 'logo@2x.png',
         width: 1200,
         height: 1000
+      },
+      { // Transformed version example
+        transformer: function(svg) {
+          return svg.replace('#000000', '#ffffff'); // You can use elementtree or xmldom here...
+        },
+        path: 'logo-black.png',
+        versions: [
+          { // Nested example: transformed + retina
+            path: 'logo-black@2x.svg',
+            width: 1200,
+            height: 1000
+          }
+        ]
       }
     ]
   }

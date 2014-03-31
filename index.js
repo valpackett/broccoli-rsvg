@@ -27,7 +27,12 @@ function render(from, to, options, callback) {
       height: svg.height
     }, options)).data, callback);
   });
-  fs.createReadStream(from).pipe(svg);
+  var transformer = options['transformer'];
+  fs.readFile(from, {encoding: 'UTF-8'}, function(err, data) {
+    if (err) throw err;
+    if (typeof transformer === 'function') data = transformer(data);
+    svg.end(data);
+  });
 }
 
 SvgRenderer.prototype.getDestFilePath = function(relativePath) {
