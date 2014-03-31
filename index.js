@@ -21,12 +21,11 @@ SvgRenderer.prototype.constructor = SvgRenderer;
 function render(from, to, options, callback) {
   var svg = new Rsvg();
   svg.on('finish', function() {
-    fs.writeFileSync(to, svg.render(_.merge({
+    fs.writeFile(to, svg.render(_.merge({
       format: 'png',
       width: svg.width,
       height: svg.height
-    }, options)).data);
-    callback();
+    }, options)).data, callback);
   });
   fs.createReadStream(from).pipe(svg);
 }
