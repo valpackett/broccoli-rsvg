@@ -40,18 +40,20 @@ SvgRenderer.prototype.getDestFilePath = function(relativePath) {
 }
 
 SvgRenderer.prototype.promiseForFile = function(srcDir, relativePath, destDir, version) {
-  var self = this;
-  var srcPath = path.join(srcDir, relativePath);
-  var promise = new RSVP.Promise(function(resolve, reject) {
-    var destPath = path.join(destDir, version['path'] || self.getDestFilePath(relativePath));
-    mkdirp.sync(path.dirname(destPath));
-    render(srcPath, destPath, version, resolve);
-  });
-  var allPromises = (version['versions'] || []).map(function(v) {
-    return self.promiseForFile(srcDir, relativePath, destDir, _.merge(_.omit(version, 'versions'), v));
-  });
-  allPromises.push(promise);
-  return RSVP.all(allPromises);
+  if (typeof version !== 'undefined') {
+    var self = this;
+    var srcPath = path.join(srcDir, relativePath);
+    var promise = new RSVP.Promise(function(resolve, reject) {
+      var destPath = path.join(destDir, version['path'] || self.getDestFilePath(relativePath));
+      mkdirp.sync(path.dirname(destPath));
+      render(srcPath, destPath, version, resolve);
+    });
+    var allPromises = (version['versions'] || []).map(function(v) {
+      return self.promiseForFile(srcDir, relativePath, destDir, _.merge(_.omit(version, 'versions'), v));
+    });
+    allPromises.push(promise);
+    return RSVP.all(allPromises);
+  }
 }
 
 SvgRenderer.prototype.transform = function(srcDir, destDir) {
