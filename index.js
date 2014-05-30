@@ -61,7 +61,8 @@ SvgRenderer.prototype.updateCache = function(srcDir, destDir) {
     if (relativePath.slice(-1) === '/') {
       mkdirp.sync(path.join(destDir, relativePath));
     } else {
-      return self.promiseForFile.bind(self)(srcDir, relativePath, destDir, self.fileOptions[relativePath]);
+      var version = self.fileOptions[relativePath] || {};
+      return self.promiseForFile.bind(self)(srcDir, relativePath, destDir, version);
     }
   });
   return RSVP.all(promises);
