@@ -43,15 +43,15 @@ SvgRenderer.prototype.promiseForFile = function(srcDir, relativePath, destDir, v
   if (typeof version !== 'undefined') {
     var self = this;
     var srcPath = path.join(srcDir, relativePath);
-    var basicPromise = new RSVP.Promise(function(resolve, reject) {
+    var allPromises = (version['versions'] || []).map(function(v) {
+      return self.promiseForFile(srcDir, relativePath, destDir, _.merge(_.omit(version, 'versions'), v));
+    });
+    allPromises.push(new RSVP.Promise(function(resolve, reject) {
       var destPath = path.join(destDir, version['path'] || self.getDestFilePath(relativePath));
       mkdirp.sync(path.dirname(destPath));
       render(srcPath, destPath, version, resolve);
-    });
-    var versionPromises = (version['versions'] || []).map(function(v) {
-      return self.promiseForFile(srcDir, relativePath, destDir, _.merge(_.omit(version, 'versions'), v));
-    });
-    return RSVP.all(versionPromises).then(basicPromise);
+    }));
+    return RSVP.all(allPromises);
   }
 }
 
