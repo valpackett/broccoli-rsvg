@@ -1,7 +1,7 @@
 'use strict';
 var fs = require('fs');
 var path = require('path');
-var Transform = require('broccoli-transform');
+var CachingWriter = require('broccoli-caching-writer');
 var Rsvg = require('rsvg').Rsvg;
 var RSVP = require('rsvp');
 var path = require('path');
@@ -15,7 +15,7 @@ function SvgRenderer(inputTree, fileOptions) {
   this.fileOptions = fileOptions || {};
 }
 
-SvgRenderer.prototype = Object.create(Transform.prototype)
+SvgRenderer.prototype = Object.create(CachingWriter.prototype);
 SvgRenderer.prototype.constructor = SvgRenderer;
 
 function render(from, to, options, callback) {
@@ -56,7 +56,7 @@ SvgRenderer.prototype.promiseForFile = function(srcDir, relativePath, destDir, v
   }
 }
 
-SvgRenderer.prototype.transform = function(srcDir, destDir) {
+SvgRenderer.prototype.updateCache = function(srcDir, destDir) {
   var self = this;
   var promises = walkSync(srcDir).map(function(relativePath) {
     if (relativePath.slice(-1) === '/') {

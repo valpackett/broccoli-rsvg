@@ -54,7 +54,7 @@ var png = renderSvg("svg", {
         path: 'logo-black.png',
         versions: [
           { // Nested example: transformed + retina
-            path: 'logo-black@2x.svg',
+            path: 'logo-black@2x.png',
             width: 1200,
             height: 1000
           }
