@@ -1,25 +1,34 @@
 {
-  "name": "broccoli-rsvg",
-  "description": "SVG to PNG renderer for Broccoli",
-  "version": "0.2.3",
-  "author": "Greg V <floatboth@me.com>",
-  "main": "index.js",
-  "license": "Apache-2.0",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/myfreeweb/broccoli-rsvg"
-  },
-  "keywords": [
-    "broccoli-plugin",
-    "svg",
-    "rsvg"
-  ],
-  "dependencies": {
-    "broccoli-caching-writer": "^0.3.1",
-    "mkdirp": "^0.5.0",
-    "walk-sync": "^0.1.2",
-    "lodash": "^2.4.1",
-    "rsvp": "^3.0.6",
-    "rsvg": "^0.2.5"
-  }
+	"name": "broccoli-rsvg",
+	"description": "SVG to PNG renderer for Broccoli",
+	"version": "0.2.4",
+	"author": "Greg V <floatboth@me.com>",
+	"engines": {
+		"node": "*"
+	},
+	"main": "index",
+	"keywords": [
+		"broccoli-plugin",
+		"svg",
+		"rsvg"
+	],
+	"dependencies": {
+		"broccoli-caching-writer": "^0.3.1",
+		"mkdirp": "^0.5.0",
+		"walk-sync": "^0.1.2",
+		"lodash": "^2.4.1",
+		"rsvp": "^3.0.6",
+		"rsvg": "^0.2.5"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/myfreeweb/broccoli-rsvg"
+	},
+	"license": [{
+		"type": "WTFPL",
+		"url": "https://github.com/myfreeweb/broccoli-rsvg/blob/master/COPYING"
+	}],
+	"bugs": {
+		"url": "https://github.com/myfreeweb/broccoli-rsvg/issues"
+	}
 }
