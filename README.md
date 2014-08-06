@@ -1,4 +1,4 @@
-# broccoli-rsvg [![npm version](https://img.shields.io/npm/v/broccoli-rsvg.svg?style=flat)](https://www.npmjs.org/package/broccoli-rsvg) [![npm downloads](https://img.shields.io/npm/dm/broccoli-rsvg.svg?style=flat)](https://www.npmjs.org/package/broccoli-rsvg) [![WTFPL](https://img.shields.io/badge/license-WTFPL-brightgreen.svg?style=flat)](https://www.tldrlegal.com/l/wtfpl)
+# broccoli-rsvg [![npm version](https://img.shields.io/npm/v/broccoli-rsvg.svg?style=flat)](https://www.npmjs.org/package/broccoli-rsvg) [![npm downloads](https://img.shields.io/npm/dm/broccoli-rsvg.svg?style=flat)](https://www.npmjs.org/package/broccoli-rsvg) [![Dependency Status](https://img.shields.io/gemnasium/myfreeweb/broccoli-rsvg.svg?style=flat)](https://gemnasium.com/myfreeweb/broccoli-rsvg) [![WTFPL](https://img.shields.io/badge/license-WTFPL-brightgreen.svg?style=flat)](https://www.tldrlegal.com/l/wtfpl)
 
 This [Broccoli][] plugin renders SVG files to PNG using [node-rsvg][].
 
