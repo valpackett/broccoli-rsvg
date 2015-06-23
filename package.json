@@ -4,15 +4,11 @@
   "version": "0.3.0",
   "author": "Greg V <greg@unrelenting.technology>",
   "main": "index.js",
-  "license": "Unlicense",
   "repository": {
     "type": "git",
     "url": "https://github.com/myfreeweb/broccoli-rsvg"
   },
-  "license": [{
-    "type": "Unlicense",
-    "url": "http://unlicense.org"
-  }],
+  "license": "Unlicense",
   "bugs": {
     "url": "https://github.com/myfreeweb/broccoli-rsvg/issues"
   },
