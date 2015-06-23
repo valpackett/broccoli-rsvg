@@ -2,7 +2,7 @@
 var fs = require('fs');
 var path = require('path');
 var CachingWriter = require('broccoli-caching-writer');
-var Rsvg = require('rsvg').Rsvg;
+var Rsvg = require('librsvg').Rsvg;
 var RSVP = require('rsvp');
 var path = require('path');
 var mkdirp = require('mkdirp');
@@ -11,7 +11,7 @@ var _ = require('lodash');
 
 function SvgRenderer(inputTree, fileOptions) {
   if (!(this instanceof SvgRenderer)) return new SvgRenderer(inputTree, fileOptions);
-  this.inputTree = inputTree;
+  CachingWriter.apply(this, arguments)
   this.fileOptions = fileOptions || {};
 }
 
@@ -35,7 +35,7 @@ function render(from, to, options, callback) {
   });
 }
 
-SvgRenderer.prototype.getDestFilePath = function(relativePath) {
+function getDestFilePath(relativePath) {
   return relativePath.replace('svg', 'png');
 }
 
@@ -47,7 +47,7 @@ SvgRenderer.prototype.promiseForFile = function(srcDir, relativePath, destDir, v
       return self.promiseForFile(srcDir, relativePath, destDir, _.merge(_.omit(version, 'versions'), v));
     });
     allPromises.push(new RSVP.Promise(function(resolve, reject) {
-      var destPath = path.join(destDir, version['path'] || self.getDestFilePath(relativePath));
+      var destPath = path.join(destDir, version['path'] || getDestFilePath(relativePath));
       mkdirp.sync(path.dirname(destPath));
       render(srcPath, destPath, version, resolve);
     }));
@@ -55,15 +55,17 @@ SvgRenderer.prototype.promiseForFile = function(srcDir, relativePath, destDir, v
   }
 }
 
-SvgRenderer.prototype.updateCache = function(srcDir, destDir) {
+SvgRenderer.prototype.updateCache = function(srcPaths, destDir) {
   var self = this;
-  var promises = walkSync(srcDir).map(function(relativePath) {
-    if (relativePath.slice(-1) === '/') {
-      mkdirp.sync(path.join(destDir, relativePath));
-    } else {
-      var version = self.fileOptions[relativePath] || {};
-      return self.promiseForFile.bind(self)(srcDir, relativePath, destDir, version);
-    }
+  var promises = srcPaths.map(function(srcDir) {
+    return RSVP.all(walkSync(srcDir).map(function(relativePath) {
+      if (relativePath.slice(-1) === '/') {
+        mkdirp.sync(path.join(destDir, relativePath));
+      } else {
+        var version = self.fileOptions[relativePath] || {};
+        return self.promiseForFile.bind(self)(srcDir, relativePath, destDir, version);
+      }
+    }));
   });
   return RSVP.all(promises);
 }

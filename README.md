@@ -1,6 +1,6 @@
-# broccoli-rsvg [![npm version](https://img.shields.io/npm/v/broccoli-rsvg.svg?style=flat)](https://www.npmjs.org/package/broccoli-rsvg) [![npm downloads](https://img.shields.io/npm/dm/broccoli-rsvg.svg?style=flat)](https://www.npmjs.org/package/broccoli-rsvg) [![Dependency Status](https://img.shields.io/gemnasium/myfreeweb/broccoli-rsvg.svg?style=flat)](https://gemnasium.com/myfreeweb/broccoli-rsvg) [![WTFPL](https://img.shields.io/badge/license-WTFPL-brightgreen.svg?style=flat)](https://www.tldrlegal.com/l/wtfpl)
+# broccoli-rsvg [![npm version](https://img.shields.io/npm/v/broccoli-rsvg.svg?style=flat)](https://www.npmjs.org/package/broccoli-rsvg) [![npm downloads](https://img.shields.io/npm/dm/broccoli-rsvg.svg?style=flat)](https://www.npmjs.org/package/broccoli-rsvg) [![Build Status](https://img.shields.io/travis/myfreeweb/broccoli-rsvg.svg?style=flat)](https://travis-ci.org/myfreeweb/broccoli-rsvg) [![Dependency Status](https://img.shields.io/gemnasium/myfreeweb/broccoli-rsvg.svg)](https://gemnasium.com/myfreeweb/broccoli-rsvg) [![unlicense](https://img.shields.io/badge/un-license-green.svg?style=flat)](http://unlicense.org)
 
-This [Broccoli][] plugin renders SVG files to PNG using [node-rsvg][].
+This [Broccoli] plugin renders SVG files to PNG using [node-rsvg].
 
 [Broccoli]: https://github.com/joliss/broccoli
 [node-rsvg]: https://github.com/walling/node-rsvg
@@ -67,13 +67,18 @@ var png = renderSvg("svg", {
 return [svg, png];
 ```
 
-**Note**: do not pass [broccoli-svgo][] output to rsvg, it might get screwed up.
+**Note**: do not pass [broccoli-svgo] output to rsvg, it might get screwed up.
 
 [broccoli-svgo]: https://github.com/sindresorhus/broccoli-svgo
 
+## Contributing
+
+Please feel free to submit pull requests!
+Bugfixes and simple non-breaking improvements will be accepted without any questions :-)
+
+By participating in this project you agree to follow the [Contributor Code of Conduct](http://contributor-covenant.org/version/1/1/0/).
+
 ## License
 
-Copyright © 2014 [myfreeweb](https://github.com/myfreeweb)
-This work is free. You can redistribute it and/or modify it under the
-terms of the Do What The Fuck You Want To Public License, Version 2,
-as published by Sam Hocevar. See the COPYING file for more details.
+This is free and unencumbered software released into the public domain.  
+For more information, please refer to the `UNLICENSE` file or [unlicense.org](http://unlicense.org).
