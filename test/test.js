@@ -6,7 +6,7 @@ var broccoli = require('broccoli');
 var rsvg = require('../');
 
 describe('broccoli-rsvg', function() {
-  it('should create a png file throw errors', function(done) {
+  it('should create a png file without errors', function(done) {
     var builder = new broccoli.Builder(rsvg('test/svg'));
     builder.build().then(function(results) {
       fs.existsSync(path.join(results.directory, 'test.png')).should.be.true();
