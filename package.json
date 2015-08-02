@@ -1,7 +1,7 @@
 {
   "name": "broccoli-rsvg",
   "description": "SVG to PNG renderer for Broccoli",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "author": "Greg V <greg@unrelenting.technology>",
   "main": "index.js",
   "repository": {
