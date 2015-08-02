@@ -24,9 +24,9 @@ npm install --save-dev broccoli-rsvg
 ## Usage
 
 ```js
-var renderSvg = require('broccoli-rsvg');
+var renderSvg = require('broccoli-rsvg')
 
-var outputTree = renderSvg(inputTree, fileOptions);
+var outputTree = renderSvg(inputTree, fileOptions)
 ```
 
 - **`inputTree`**: A tree that contains the SVG files you want to render.
@@ -35,7 +35,7 @@ var outputTree = renderSvg(inputTree, fileOptions);
 ## Example
 
 ```js
-var renderSvg = require('broccoli-rsvg');
+var renderSvg = require('broccoli-rsvg')
 
 var png = renderSvg("svg", {
   'logo.svg': {
@@ -49,7 +49,7 @@ var png = renderSvg("svg", {
       },
       { // Transformed version example
         transformer: function(svg) {
-          return svg.replace('#000000', '#ffffff'); // You can use elementtree or xmldom here...
+          return svg.replace('#000000', '#ffffff') // You can use elementtree or xmldom here...
         },
         path: 'logo-black.png',
         versions: [
@@ -62,9 +62,9 @@ var png = renderSvg("svg", {
       }
     ]
   }
-});
+})
 
-return [svg, png];
+return [svg, png]
 ```
 
 **Note**: do not pass [broccoli-svgo] output to rsvg, it might get screwed up.
@@ -76,7 +76,7 @@ return [svg, png];
 Please feel free to submit pull requests!
 Bugfixes and simple non-breaking improvements will be accepted without any questions :-)
 
-By participating in this project you agree to follow the [Contributor Code of Conduct](http://contributor-covenant.org/version/1/1/0/).
+By participating in this project you agree to follow the [Contributor Code of Conduct](http://contributor-covenant.org/version/1/2/0/).
 
 ## License
 

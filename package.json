@@ -18,10 +18,10 @@
     "rsvg"
   ],
   "scripts": {
-    "test": "mocha test/ --full-trace"
+    "test": "tape 'test/*.js' | tap-spec"
   },
   "dependencies": {
-    "broccoli-caching-writer": "^0.5.5",
+    "broccoli-caching-writer": "^1.0.0",
     "mkdirp": "^0.5.0",
     "walk-sync": "^0.1.2",
     "lodash": "^3.9.3",
@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "broccoli": "^0.16.3",
-    "mocha": "^2.2.5",
-    "should": "^7.0.1"
+    "tap-spec": "^4.0.2",
+    "tape": "^4.0.1"
   }
 }
