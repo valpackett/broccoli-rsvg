@@ -1,9 +1,9 @@
-# broccoli-rsvg [![npm version](https://img.shields.io/npm/v/broccoli-rsvg.svg?style=flat)](https://www.npmjs.org/package/broccoli-rsvg) [![npm downloads](https://img.shields.io/npm/dm/broccoli-rsvg.svg?style=flat)](https://www.npmjs.org/package/broccoli-rsvg) [![Build Status](https://img.shields.io/travis/myfreeweb/broccoli-rsvg.svg?style=flat)](https://travis-ci.org/myfreeweb/broccoli-rsvg) [![Dependency Status](https://img.shields.io/gemnasium/myfreeweb/broccoli-rsvg.svg)](https://gemnasium.com/myfreeweb/broccoli-rsvg) [![unlicense](https://img.shields.io/badge/un-license-green.svg?style=flat)](http://unlicense.org)
+# broccoli-rsvg [![npm version](https://img.shields.io/npm/v/broccoli-rsvg.svg?style=flat)](https://www.npmjs.org/package/broccoli-rsvg) [![npm downloads](https://img.shields.io/npm/dm/broccoli-rsvg.svg?style=flat)](https://www.npmjs.org/package/broccoli-rsvg) [![Build Status](https://img.shields.io/travis/myfreeweb/broccoli-rsvg.svg?style=flat)](https://travis-ci.org/myfreeweb/broccoli-rsvg) [![Dependency Status](https://img.shields.io/gemnasium/myfreeweb/broccoli-rsvg.svg)](https://gemnasium.com/myfreeweb/broccoli-rsvg) [![unlicense](https://img.shields.io/badge/un-license-green.svg?style=flat)](http://unlicense.org) 
 
 This [Broccoli] plugin renders SVG files to PNG using [node-rsvg].
 
 [Broccoli]: https://github.com/joliss/broccoli
-[node-rsvg]: https://github.com/walling/node-rsvg
+[node-rsvg]: https://github.com/2gis/node-rsvg
 
 ## Installation
 
@@ -17,7 +17,6 @@ First, get librsvg:
 Second, install as any other broccoli plugin:
 
 ```bash
-export PKG_CONFIG_PATH=/opt/X11/lib/pkgconfig # on OS X
 npm install --save-dev broccoli-rsvg
 ```
 
@@ -26,18 +25,18 @@ npm install --save-dev broccoli-rsvg
 ```js
 var renderSvg = require('broccoli-rsvg')
 
-var outputTree = renderSvg(inputTree, fileOptions)
+var outputTree = renderSvg(inputNodes, fileOptions)
 ```
 
-- **`inputTree`**: A tree that contains the SVG files you want to render.
+- **`inputNodes`**: A list of nodes (trees) that contain the SVG files you want to render.
 - **`fileOptions`**: A hash of rsvg options and alternative versions for each file; see the following example.
 
 ## Example
 
 ```js
-var renderSvg = require('broccoli-rsvg')
+var Rsvg = require('broccoli-rsvg')
 
-var png = renderSvg("svg", {
+var png = new Rsvg(['svg'], {
   'logo.svg': {
     width: 600,
     height: 500, // optional override, values from the svg file itself are used by default
@@ -67,16 +66,15 @@ var png = renderSvg("svg", {
 return [svg, png]
 ```
 
-**Note**: do not pass [broccoli-svgo] output to rsvg, it might get screwed up.
+**Note**: avoid passing [broccoli-svgo] output to rsvg, it might get screwed up.
 
 [broccoli-svgo]: https://github.com/sindresorhus/broccoli-svgo
 
 ## Contributing
 
 Please feel free to submit pull requests!
-Bugfixes and simple non-breaking improvements will be accepted without any questions :-)
 
-By participating in this project you agree to follow the [Contributor Code of Conduct](http://contributor-covenant.org/version/1/2/0/).
+By participating in this project you agree to follow the [Contributor Code of Conduct](http://contributor-covenant.org/version/1/4/).
 
 ## License
 
