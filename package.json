@@ -1,7 +1,7 @@
 {
   "name": "broccoli-rsvg",
   "description": "SVG to PNG renderer for Broccoli",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "author": "Greg V <greg@unrelenting.technology>",
   "main": "index.js",
   "repository": {
@@ -24,9 +24,9 @@
     "broccoli-caching-writer": "^2.2.1",
     "mkdirp": "^0.5.1",
     "walk-sync": "^0.2.6",
-    "lodash": "^4.7.0",
+    "lodash": "^4.9.0",
     "rsvp": "^3.2.1",
-    "librsvg": "^0.6.1"
+    "librsvg": "^0.6.2"
   },
   "devDependencies": {
     "broccoli": "^0.16.3",
